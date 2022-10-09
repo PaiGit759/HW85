@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HW85</title>
+    <style type="text/css">
+        body {
+            background-color: rgb(150, 150, 202);
+        }
+
+        .exsample {
+            top: 5%;
+        }
+
+        .exsample1 {
+            top: 28%;
+        }
+
+        .exsample2 {
+            top: 16%;
+        }
+
+        .exsample1 {
+            position: relative;
+            left: 27%;
+            top: 90px;
+            width: 25%;
+            height: 100px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            font-size: x-large;
+            margin-top: 5px;
+            text-align: justify;
+            background: lightgray;
+            border: 1px solid greenyellow;
+            border-radius: 3%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="myForm" class="exsample1">
+        <label for="name">Set value:</label><br>
+        <input type="text" id="name" name="name" value=""><br>
+
+        <p id="pCheck" style="font-size:12px ;"></p>
+        <div>
+            <button id="btn1" onclick="onClicBtn1()">Get element</button>
+            <button id="btn2" onclick="onClicBtn2()">Add element</button>
+            <button id="btn3" onclick="onClicBtn3()">Delete element</button>
+        </div>
+    </div>
+
+    <script>
+
+        let cats = new Set();
+
+        function onClicBtn1() {
+
+            value = document.getElementById('name').value;
+            document.getElementById('pCheck').innerHTML = "";
+
+            if (cats.has(value)) {
+                document.getElementById('pCheck').innerHTML = "Element exists";
+            }
+            else {
+                document.getElementById('pCheck').innerHTML = "The element does not exist. Add it";
+            }
+        }
+
+        function onClicBtn2() {
+            value = document.getElementById('name').value;
+            if (cats.has(value)) {
+                document.getElementById('pCheck').innerHTML = "Element already exists";
+            }
+            else {
+                document.getElementById('pCheck').innerHTML = "The element added";
+                cats.add(value);
+            }
+            
+        }     
+
+        function onClicBtn3() {
+            value = document.getElementById('name').value;
+            if(cats.delete(value)){
+                document.getElementById('pCheck').innerHTML = "The element " + value + " has been removed";       
+            }
+            else{
+                document.getElementById('pCheck').innerHTML = "The element does not exist. Add it";   
+            };
+        }     
+    </script>
+
+</body>
+
+</html>
